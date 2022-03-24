@@ -10,15 +10,13 @@ A plugin for QQBot based on Mirai.
 
 ## ⌨️使用说明
 
-----
-
 1. 使用本插件，你可能需要了解一下 [GitHub - mamoe/mirai: 高效率 QQ 机器人支持库](https://github.com/mamoe/mirai) 。
 
 2. 你可以直接使用Mirai的一键安装工具，相关使用说明：[mirai/UserManual.md at dev · mamoe/mirai · GitHub](https://github.com/mamoe/mirai/blob/dev/docs/UserManual.md#%E4%BD%BF%E7%94%A8%E7%BA%AF%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%89%88%E6%9C%AC) 
 
 3. 若你已经安装好Mirai Console(MCL)了，那你直接把编译出来的Jar包放进MCL根目录的 "plugins" 文件夹后重启MCL即可。
    
-   ![](C:\Users\SwaggyMacro\AppData\Roaming\marktext\images\2022-03-24-10-51-21-image.png)
+   ![](https://raw.githubusercontent.com/SwaggyMacro/MiraiNsfwBot/master/preview/2022-03-24-10-51-21-image.png)
 
 已编译好Jar包下载：[MiraiNsfwBot 阿里云盘](https://www.aliyundrive.com/s/WPWcTWz4vQc)
 
@@ -70,8 +68,6 @@ A plugin for QQBot based on Mirai.
 
 ## 🖼️使用截图
 
-----
+![](https://raw.githubusercontent.com/SwaggyMacro/MiraiNsfwBot/master/preview/2022-03-24-11-13-36-image.png)
 
-![](C:\Users\SwaggyMacro\AppData\Roaming\marktext\images\2022-03-24-11-13-36-image.png)
-
-![](C:\Users\SwaggyMacro\AppData\Roaming\marktext\images\2022-03-24-11-13-49-image.png)
+![](https://raw.githubusercontent.com/SwaggyMacro/MiraiNsfwBot/master/preview/2022-03-24-11-13-49-image.png)
