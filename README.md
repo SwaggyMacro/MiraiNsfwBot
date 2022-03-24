@@ -50,7 +50,7 @@ A plugin for QQBot based on Mirai.
 
 - **!NSFW切换模型:3**
   
-  - 将NSFW CNN模型切换至resnet50模型，总共有三种模型，分别是：3和其他任意字符代表resnet50、1代表inceptionV3、2代表mobilenet。mobilenet识别速度最快，识别率也最差。
+  - 将NSFW CNN模型切换至resnet50模型，总共有三种模型，分别是：3和其他任意字符代表resnet50、1代表inceptionV3、2代表mobilenet。mobilenet识别速度最快，识别率也最差。默认使用resnet50。
   
   - 所以以上指令的意思就是让鉴黄插件切换至resnet50模型。
 
