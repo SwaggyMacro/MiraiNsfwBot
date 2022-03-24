@@ -161,14 +161,17 @@ public class NsfwConfig {
         private String adminReply;
         @JSONField(name = "owner")
         private String ownerReply;
+        @JSONField(name = "permission")
+        private String perReply;
 
-        public reply(String muteReply, String recallReply, String nothingReply, String muteRecallReply, String adminReply, String ownerReply) {
+        public reply(String muteReply, String recallReply, String nothingReply, String muteRecallReply, String adminReply, String ownerReply, String perReply) {
             this.muteReply = muteReply;
             this.recallReply = recallReply;
             this.nothingReply = nothingReply;
             this.muteRecallReply = muteRecallReply;
             this.adminReply = adminReply;
             this.ownerReply = ownerReply;
+            this.perReply = perReply;
         }
 
         public String getMuteReply() {
@@ -217,6 +220,14 @@ public class NsfwConfig {
 
         public void setOwnerReply(String ownerReply) {
             this.ownerReply = ownerReply;
+        }
+
+        public String getPerReply() {
+            return perReply;
+        }
+
+        public void setPerReply(String perReply) {
+            this.perReply = perReply;
         }
     }
 

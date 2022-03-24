@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class ImageUtil {
 
-    public static String saveImage(Image image, String pluginPath, String ext) throws IOException {
+    public static String saveImage(Image image, String pluginPath) throws IOException {
         URL url = new URL(Image.queryUrl(image));
         final InputStream inputStream = url.openConnection().getInputStream();
 
@@ -39,16 +39,16 @@ public class ImageUtil {
         }
         inputStream.close();
         //String fileExt = getExtension(imageFile.getPath());
-        //Get the truly ext of image file. (get it form message now)
-        //String fileExt = Objects.requireNonNull(FileTypeJudge.getType(imageFile.getPath())).toString().toLowerCase();
+        //Get the truly ext of image file. Some images file's ext is .mirai
+        String fileExt = Objects.requireNonNull(FileTypeJudge.getType(imageFile.getPath())).toString().toLowerCase();
         // convert image to jpeg
-        if (!ext.equals("jpg")){
-            if (ext.equals("jpeg")){
+        if (!fileExt.equals("jpg")){
+            if (fileExt.equals("jpeg")){
                 return imageFile.getPath();
             }
             String[] fileName = imageFile.getPath().split("\\.");
             try {
-                forJpg(imageFile.getPath(), fileName[0] + ".jpg", ext, "jpeg");
+                forJpg(imageFile.getPath(), fileName[0] + ".jpg", fileExt, "jpeg");
             }catch (IIOException e){
                 png2jpg(imageFile.getPath(),fileName[0] + ".jpg");
             }

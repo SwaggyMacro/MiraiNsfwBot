@@ -184,6 +184,9 @@ public class BotRunner {
             case "不作为":
                 this.nsfwConfig._reply.setNothingReply(reply);
                 break;
+            case "权限":
+                this.nsfwConfig._reply.setPerReply(reply);
+                break;
         }
         this.nsfwConfig.SaveConfig();
         SendMessage(event, "设置成功!");
@@ -293,7 +296,7 @@ public class BotRunner {
             while(m.find()) {
                 Image image = Image.fromId(m.group(2) + '.' + m.group(3));
                 try {
-                    String imgPath = ImageUtil.saveImage(image, this.pluginPath, m.group(3));
+                    String imgPath = ImageUtil.saveImage(image, this.pluginPath);
                     BufferedImage bufferedImage = ImageIO.read(new FileInputStream(imgPath));
                     String ret = antiModel.detector(bufferedImage);
                     LogInfo(ret);
@@ -326,18 +329,22 @@ public class BotRunner {
                         } else if (event.getSource().getSender().getPermission() == MemberPermission.OWNER){
                             messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getOwnerReply()).build();
                         } else {
-                            if (this.nsfwConfig._porn.getBanType() == 2) { // 0=nothing 1=mute 2=recall 3=mute and recall
-                                MessageSource.recall(chain);
-                                messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getRecallReply()).build();
-                            } else if(this.nsfwConfig._porn.getBanType() == 3) {
-                                MessageSource.recall(chain);
-                                event.getSender().mute(this.nsfwConfig._porn.getBanTime());
-                                messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getMuteRecallReply()).build();
-                            } else if(this.nsfwConfig._porn.getBanType() == 1){
-                                event.getSender().mute(this.nsfwConfig._porn.getBanTime());
-                                messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getMuteReply()).build();
+                            if (event.getGroup().getBotPermission() == MemberPermission.ADMINISTRATOR || event.getGroup().getBotPermission() == MemberPermission.OWNER) {
+                                if (this.nsfwConfig._porn.getBanType() == 2) { // 0=nothing 1=mute 2=recall 3=mute and recall
+                                    MessageSource.recall(chain);
+                                    messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getRecallReply()).build();
+                                } else if (this.nsfwConfig._porn.getBanType() == 3) {
+                                    MessageSource.recall(chain);
+                                    event.getSender().mute(this.nsfwConfig._porn.getBanTime());
+                                    messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getMuteRecallReply()).build();
+                                } else if (this.nsfwConfig._porn.getBanType() == 1) {
+                                    event.getSender().mute(this.nsfwConfig._porn.getBanTime());
+                                    messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getMuteReply()).build();
+                                } else {
+                                    messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getNothingReply()).build();
+                                }
                             } else {
-                                messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getNothingReply()).build();
+                                messages = new MessageChainBuilder().append(new At(event.getSender().getId())).append(this.nsfwConfig._reply.getPerReply()).build();
                             }
                         }
                         event.getSubject().sendMessage(messages);
