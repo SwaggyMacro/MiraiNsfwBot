@@ -19,9 +19,9 @@ A plugin for QQBot based on Mirai.
    ![](https://raw.githubusercontent.com/SwaggyMacro/MiraiNsfwBot/master/preview/2022-03-24-10-51-21-image.png)
 
 **已编译好Jar包下载：**
-[🔗Github Release 下载](https://github.com/SwaggyMacro/MiraiNsfwBot/releases/download/1.0/nsfw-1.0.mirai.jar)
-[🔗MiraiNsfwBot 阿里云盘](https://www.aliyundrive.com/s/1wwVbw9X9SG)
-[🔗MiraiNsfwBot 百度网盘](https://pan.baidu.com/s/1j-TwhD0HgnpJ4sNRRQz-Ng?pwd=9agy)
+- [🔗Github Release 下载](https://github.com/SwaggyMacro/MiraiNsfwBot/releases/download/1.0/nsfw-1.0.mirai.jar)
+- [🔗MiraiNsfwBot 阿里云盘](https://www.aliyundrive.com/s/1wwVbw9X9SG)
+- [🔗MiraiNsfwBot 百度网盘](https://pan.baidu.com/s/1j-TwhD0HgnpJ4sNRRQz-Ng?pwd=9agy)
 
 
 
