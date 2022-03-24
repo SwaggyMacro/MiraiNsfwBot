@@ -102,6 +102,14 @@ public class NsfwConfig {
             return false;
         }
 
+        public void clear(){
+            this.lists.clear();
+        }
+
+        public String getAll(){
+            return this.lists.toString();
+        }
+
     }
 
     public static class master{
@@ -169,6 +177,14 @@ public class NsfwConfig {
                 }
             }
             return false;
+        }
+
+        public void clear(){
+            this.group.clear();
+        }
+
+        public String getAll(){
+            return this.group.toString();
         }
 
     }

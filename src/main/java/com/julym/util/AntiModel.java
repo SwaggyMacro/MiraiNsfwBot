@@ -10,6 +10,7 @@ import com.julym.config.NsfwConfig;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;

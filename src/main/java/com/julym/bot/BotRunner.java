@@ -309,6 +309,62 @@ public class BotRunner {
                 SendMessage(event, "该指令仅限机器人主人使用！");
             }
         }
+
+        if (chain.contentToString().replace("：",":").indexOf("!NSFW查看白名单列表") == 0) {
+            if (this.Master.equals("")){
+                SendMessage(event, "请先使用 \"!NSFW设置主人:QQ号\" 设置机器人主人QQ！ ");
+            }else if(this.Master.equals(Long.toString(event.getSender().getId()))){
+                event.getSubject().sendMessage(new MessageChainBuilder().
+                        append(new At(event.getSender().getId())).
+                        append(this.nsfwConfig._whiteList.getAll()).
+                        build());
+            }else{
+                SendMessage(event, "该指令仅限机器人主人使用！");
+            }
+        }
+
+        if (chain.contentToString().replace("：",":").indexOf("!NSFW查看群列表") == 0) {
+            if (this.Master.equals("")){
+                SendMessage(event, "请先使用 \"!NSFW设置主人:QQ号\" 设置机器人主人QQ！ ");
+            }else if(this.Master.equals(Long.toString(event.getSender().getId()))){
+                event.getSubject().sendMessage(new MessageChainBuilder().
+                        append(new At(event.getSender().getId())).
+                        append(this.nsfwConfig._groups.getAll()).
+                        build());
+            }else{
+                SendMessage(event, "该指令仅限机器人主人使用！");
+            }
+        }
+
+        if (chain.contentToString().replace("：",":").indexOf("!NSFW清空群列表") == 0) {
+            if (this.Master.equals("")){
+                SendMessage(event, "请先使用 \"!NSFW设置主人:QQ号\" 设置机器人主人QQ！ ");
+            }else if(this.Master.equals(Long.toString(event.getSender().getId()))){
+                this.nsfwConfig._groups.clear();
+                this.nsfwConfig.SaveConfig();
+                event.getSubject().sendMessage(new MessageChainBuilder().
+                        append(new At(event.getSender().getId())).
+                        append("清除成功!").
+                        build());
+            }else{
+                SendMessage(event, "该指令仅限机器人主人使用！");
+            }
+        }
+
+        if (chain.contentToString().replace("：",":").indexOf("!NSFW清空白名单") == 0) {
+            if (this.Master.equals("")){
+                SendMessage(event, "请先使用 \"!NSFW设置主人:QQ号\" 设置机器人主人QQ！ ");
+            }else if(this.Master.equals(Long.toString(event.getSender().getId()))){
+                this.nsfwConfig._whiteList.clear();
+                this.nsfwConfig.SaveConfig();
+                event.getSubject().sendMessage(new MessageChainBuilder().
+                        append(new At(event.getSender().getId())).
+                        append("清除成功!").
+                        build());
+            }else{
+                SendMessage(event, "该指令仅限机器人主人使用！");
+            }
+        }
     }
 
     public void receiveMessage(GroupMessageEvent event){
