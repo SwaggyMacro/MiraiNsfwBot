@@ -9,7 +9,7 @@ A plugin for QQBot based on Mirai.
 
 
 ## ⌨️使用说明
-
+⚠️所有撤回和禁言操作需要机器人设置为管理员！！！
 1. 使用本插件，你可能需要了解一下 [GitHub - mamoe/mirai: 高效率 QQ 机器人支持库](https://github.com/mamoe/mirai) 。
 
 2. 你可以直接使用Mirai的一键安装工具，相关使用说明：[mirai/UserManual.md at dev · mamoe/mirai · GitHub](https://github.com/mamoe/mirai/blob/dev/docs/UserManual.md#%E4%BD%BF%E7%94%A8%E7%BA%AF%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%89%88%E6%9C%AC) 
