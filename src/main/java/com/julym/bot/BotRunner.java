@@ -108,6 +108,20 @@ public class BotRunner {
         SendMessage(event, "删除成功!");
     }
 
+    private void addToWhitelist(GroupMessageEvent event, String context){
+        context = context.replace("：",":").replace("!NSFW加入白名单:","");
+        this.nsfwConfig._whiteList.add(context);
+        this.nsfwConfig.SaveConfig();
+        SendMessage(event, "加入成功!");
+    }
+
+    private void delFromWhitelist(GroupMessageEvent event, String context){
+        context = context.replace("：",":").replace("!NSFW移除白名单:","");
+        this.nsfwConfig._whiteList.remove(context);
+        this.nsfwConfig.SaveConfig();
+        SendMessage(event, "移除成功!");
+    }
+
     /**
      * Switch Model
      * @param event GroupMessageEvent
@@ -237,6 +251,26 @@ public class BotRunner {
 
         }
 
+        if (chain.contentToString().replace("：",":").indexOf("!NSFW加入白名单:") == 0) {
+            if (this.Master.equals("")){
+                SendMessage(event, "请先使用 \"!NSFW设置主人:QQ号\" 设置机器人主人QQ！ ");
+            }else if(this.Master.equals(Long.toString(event.getSender().getId()))){
+                this.addToWhitelist(event, chain.contentToString());
+            }else{
+                SendMessage(event, "该指令仅限机器人主人使用！");
+            }
+        }
+
+        if (chain.contentToString().replace("：",":").indexOf("!NSFW移除白名单:") == 0) {
+            if (this.Master.equals("")){
+                SendMessage(event, "请先使用 \"!NSFW设置主人:QQ号\" 设置机器人主人QQ！ ");
+            }else if(this.Master.equals(Long.toString(event.getSender().getId()))){
+                this.delFromWhitelist(event, chain.contentToString());
+            }else{
+                SendMessage(event, "该指令仅限机器人主人使用！");
+            }
+        }
+
         if (chain.contentToString().replace("：",":").indexOf("!NSFW添加群:") == 0) {
             if (this.Master.equals("")){
                 SendMessage(event, "请先使用 \"!NSFW设置主人:QQ号\" 设置机器人主人QQ！ ");
@@ -285,7 +319,10 @@ public class BotRunner {
             commandManager(event, chain);
         }
 
-        if (this.nsfwConfig._groups.hasGroup(String.valueOf(event.getSubject().getId()))){
+        if (this.nsfwConfig._groups.hasGroup(String.valueOf(event.getSubject().getId())) &&
+                !this.nsfwConfig._whiteList.isWhite(String.valueOf(event.getSender().getId()))){
+
+
             if (chain.contentToString().equals("SwaggyMacro")){
                 SendMessage(event, "嘿嘿, 你是怎么认识可爱的卖扣肉的呀？");
             }

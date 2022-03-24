@@ -25,12 +25,14 @@ public class NsfwConfig {
     public model _model;
     public master _master;
     public reply _reply;
+    public whiteList _whiteList;
 
 
     public NsfwConfig(String filePath){
         this.filePath = filePath;
         this._groups = new groups();
         this._master = new master();
+        this._whiteList = new whiteList();
     }
 
     public void LoadConfig(){
@@ -48,6 +50,7 @@ public class NsfwConfig {
             this._model = JSONObject.parseObject(JSON.toJSONString(jsonConfig.get("model")), model.class);
             this._master.setMaster(jsonConfig.get("master").toString());
             this._reply = JSONObject.parseObject(JSON.toJSONString(jsonConfig.get("reply")), reply.class);
+            this._whiteList.lists = JSONArray.parseArray(JSON.toJSONString(jsonConfig.get("whiteList")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,6 +68,7 @@ public class NsfwConfig {
             jsonConfig.put("model", _model);
             jsonConfig.put("master", _master.getMaster());
             jsonConfig.put("reply", _reply);
+            jsonConfig.put("whiteList", _whiteList.lists);
             File _JsonConfig = new File(filePath);
             if(_JsonConfig.createNewFile()) System.out.println("Create config.json file failed");
             FileOutputStream fos = new FileOutputStream(filePath);
@@ -74,6 +78,30 @@ public class NsfwConfig {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static class whiteList{
+
+        private JSONArray lists;
+
+        public void add(String num) {
+            this.lists.add(num);
+        }
+
+        public void remove(String num){
+            this.lists.remove(num);
+        }
+
+        public boolean isWhite(String num){
+            for (Object o : this.lists) {
+                String n = (String) o;
+                if (n.equals(num)){
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 
     public static class master{
@@ -125,7 +153,6 @@ public class NsfwConfig {
 
         private JSONArray group;
 
-
         public void add(String num) {
             this.group.add(num);
         }
@@ -143,7 +170,6 @@ public class NsfwConfig {
             }
             return false;
         }
-
 
     }
 
