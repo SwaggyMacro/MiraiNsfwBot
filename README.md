@@ -18,7 +18,7 @@ A plugin for QQBot based on Mirai.
    
    ![](https://raw.githubusercontent.com/SwaggyMacro/MiraiNsfwBot/master/preview/2022-03-24-10-51-21-image.png)
 
-**已编译好Jar包下载：**[MiraiNsfwBot 阿里云盘](https://www.aliyundrive.com/s/1wwVbw9X9SG)
+**已编译好Jar包下载：**[🔗MiraiNsfwBot 阿里云盘](https://www.aliyundrive.com/s/1wwVbw9X9SG)
 
 
 
