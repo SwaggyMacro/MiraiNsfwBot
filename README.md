@@ -95,6 +95,9 @@ resnet50的准确率在93%左右
 
 ![image](https://user-images.githubusercontent.com/38845682/160230515-fc5ca6dc-dc4c-423a-9b1b-112ccedcdf06.png)
 
+无GPU加速情况下，mobilenet网络的模型速度最快，识别一张图片在100MS内。  
+resnet50与inceptionV3速度差不多，均在200+MS。
+
 ## 🖼️使用截图
 
 ![](https://raw.githubusercontent.com/SwaggyMacro/MiraiNsfwBot/master/preview/2022-03-24-11-13-36-image.png)
