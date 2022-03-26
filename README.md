@@ -88,13 +88,13 @@ A plugin for QQBot based on Mirai.
 
 ## 🦿模型说明
 InceptionV3的准确率在91%左右
-mobilenet的准确率应该是最低的，具体多少不清楚。
+mobilenet的准确率应该是最低的，具体多少不清楚。  
 
-resnet50的准确率在93%左右
+resnet50的准确率在93%左右  
+
 ![image](https://user-images.githubusercontent.com/38845682/160230515-fc5ca6dc-dc4c-423a-9b1b-112ccedcdf06.png)
 
 ## 🖼️使用截图
 
 ![](https://raw.githubusercontent.com/SwaggyMacro/MiraiNsfwBot/master/preview/2022-03-24-11-13-36-image.png)
-![image](https://user-images.githubusercontent.com/38845682/160230522-2d7050f9-df44-4b7d-9544-f1cd1a42c4dc.png)
 ![image](https://user-images.githubusercontent.com/38845682/160230529-4a0201d3-da97-41aa-8921-0bb7b464b932.png)
