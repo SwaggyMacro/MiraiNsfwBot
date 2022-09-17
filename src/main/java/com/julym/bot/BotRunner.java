@@ -382,12 +382,8 @@ public class BotRunner {
             if (chain.contentToString().equals("SwaggyMacro")){
                 SendMessage(event, "嘿嘿, 你是怎么认识可爱的卖扣肉的呀？");
             }
-            String msg = event.getSource().getOriginalMessage().toString();
-            String pattern = "\\[mirai:(image|flash):(.*?)\\.(.*?)\\]";
-            Pattern r = Pattern.compile(pattern);
-            Matcher m = r.matcher(msg);
-            while(m.find()) {
-                Image image = Image.fromId(m.group(2) + '.' + m.group(3));
+            event.getMessage().stream().filter(Image.class::isInstance).forEach((t) -> {
+                Image image = (Image) t;
                 try {
                     String imgPath = ImageUtil.saveImage(image, this.pluginPath);
                     BufferedImage bufferedImage = ImageIO.read(new FileInputStream(imgPath));
@@ -400,21 +396,21 @@ public class BotRunner {
 
                     if (TopClass.equals("porn") || TopClass.equals("sexy") || TopClass.equals("hentai")) {
                         if (Float.parseFloat(TopProbability) < this.nsfwConfig._porn.getThreshold()){
-                            break;
+                            return;
                         }
                         if (TopClass.equals("porn")){
                             if (Float.parseFloat(TopProbability) < this.nsfwConfig._porn.getThreshold()){
-                                break;
+                                return;
                             }
                         }
                         if (TopClass.equals("sexy")){
                             if (Float.parseFloat(TopProbability) < this.nsfwConfig._sexy.getThreshold()){
-                                break;
+                                return;
                             }
                         }
                         if (TopClass.equals("hentai")){
                             if (Float.parseFloat(TopProbability) < this.nsfwConfig._hentai.getThreshold()){
-                                break;
+                                return;
                             }
                         }
                         if (event.getSource().getSender().getPermission() == MemberPermission.ADMINISTRATOR){
@@ -441,12 +437,11 @@ public class BotRunner {
                             }
                         }
                         event.getSubject().sendMessage(messages);
-                        break;
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
+            });
 
         }
 
