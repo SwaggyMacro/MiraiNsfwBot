@@ -1,6 +1,6 @@
 # 🐧MiraiNsfwBot
 
-A plugin for QQBot based on Mirai.
+A Pugin for QQBot based on Mirai Framework.
 
 一个通过Mirai框架实现的QQ机器人鉴黄插件。
 
